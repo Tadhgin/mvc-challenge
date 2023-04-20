@@ -1,6 +1,8 @@
 <ul class="post-list">
+    <!-- Loop through each post in the "posts" array -->
     {{#each posts as |post|}}
     <li>
+        <!-- Include the "post-info" partial template for each post -->
         {{> post-info post }}
     </li>
     {{/each}}

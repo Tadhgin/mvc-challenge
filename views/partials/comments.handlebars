@@ -1,9 +1,14 @@
+<!-- Comments section -->
 <div class="comments">
     {{#each this}}
+    <!-- Individual comment -->
     <section class="comment">
+        <!-- Comment metadata -->
         <div class="meta">
             {{user.username}} on {{created_at}}
         </div>
+
+        <!-- Comment text -->
         <div class="text">
             {{comment_text}}
         </div>

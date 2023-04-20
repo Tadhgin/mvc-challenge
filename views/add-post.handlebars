@@ -1,24 +1,35 @@
+<!-- Link to dashboard -->
 <a href="/dashboard" class="go-back"> &larr; Back to dashboard</a>
 
+<!-- New blog post form -->
 <article class="new-page">
     <section class="new-form-page">
+        <!-- Form heading -->
         <div class="form-heading">
             <h2>Create New Blog Post</h2>
         </div>
+
+        <!-- Form section -->
         <div class="form-section">
             <form class="new-post-form">
+                <!-- Post title input field -->
                 <div class="post-title-section">
                     <label for="post-title">Title</label>
                     <input type="text" id="post-title" name="post-title" />
                 </div>
+
+                <!-- Post content input field -->
                 <div class="post-content">
                     <label for="post-content">Content</label>
                     <textarea class="entry-field" id="post-content" name="post-content"></textarea>
                 </div>
+
+                <!-- Submit button -->
                 <button type="submit" class="btn">Create</button>
             </form>
         </div>
     </section>
 </article>
 
+<!-- Script to handle adding new post -->
 <script src="/javascript/add-post.js"></script>

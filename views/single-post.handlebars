@@ -1,9 +1,12 @@
+<!-- Link to go back to the dashboard -->
 <a href="/dashboard" class="go-back"> &larr; Back to dashboard</a>
 <br>
 <br>
 
+<!-- Include the post-info partial template -->
 {{> post-info post}}
 
+<!-- Show the comment form if the user is logged in -->
 {{#if loggedIn}}
 <form class="comment-form">
     <div>
@@ -16,8 +19,10 @@
 </form>
 {{/if}}
 
+<!-- Include the comments partial template -->
 {{> comments post.comments}}
 
+<!-- Include the comment.js script if the user is logged in -->
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}

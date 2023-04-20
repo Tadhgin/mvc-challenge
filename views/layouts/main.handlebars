@@ -2,38 +2,53 @@
 <html lang="en">
 
 <head>
+    <!-- Document metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Tech Blog</title>
+
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
+    <!-- Page wrapper -->
     <div class="wrapper">
+        <!-- Page header -->
         <header>
+            <!-- Site title -->
             <h1>
                 <a href="/">home</a>
             </h1>
+
+            <!-- Navigation menu -->
             <nav>
                 {{#if loggedIn}}
+                <!-- Dashboard link and logout button -->
                 <a href="/dashboard">dashboard</a>
                 <button id="logout" class="btn-no-style logout">logout</button>
                 {{else}}
+                <!-- Login link -->
                 <a href="/login">login</a>
                 {{/if}}
             </nav>
         </header>
+
+        <!-- Site name -->
         <div class="site-row">
             <div class="site-name">
                 <h1>The Tech Blog</h1>
             </div>
         </div>
+
+        <!-- Main content area -->
         <main>
             {{{ body }}}
         </main>
     </div>
 
     {{#if loggedIn}}
+    <!-- Logout script -->
     <script src="/javascript/logout.js"></script>
     {{/if}}
 </body>
