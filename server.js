@@ -1,7 +1,7 @@
 // Require dependencies
 const path = require('path');
 const express = require('express');
-const routes = require('./controllers');
+//const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
@@ -37,7 +37,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Set up session middleware and static file serving
-app.use(session(sess));
+//app.use(session(sess));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Parse incoming requests with JSON and urlencoded middleware
@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Set up routes
-app.use(routes);
+//app.use(routes);
 
 // Sync Sequelize models and start listening for requests
 sequelize.sync().then(() => {
