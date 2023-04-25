@@ -1,45 +1,48 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const {User, Post, Comment} = require('../../models');
 
+// Get all users
 router.get('/', async (req, res) => {
   try {
     const dbUserData = await User.findAll({
-      attributes: { exclude: ['password'] },
+      attributes: {exclude: ['password']},
     });
     res.json(dbUserData);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Failed to get users' });
+    res.status(500).json({message: 'Failed to get users'});
   }
 });
 
+// Get a specific user by ID
 router.get('/:id', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
-      attributes: { exclude: ['password'] },
-      where: { id: req.params.id },
+      attributes: {exclude: ['password']},
+      where: {id: req.params.id},
       include: [
-        { model: Post, attributes: ['id', 'title', 'content', 'created_at'] },
+        {model: Post, attributes: ['id', 'title', 'content', 'created_at']},
         {
           model: Comment,
           attributes: ['id', 'comment_text', 'created_at'],
-          include: { model: Post, attributes: ['title'] },
+          include: {model: Post, attributes: ['title']},
         },
       ],
     });
 
     if (!dbUserData) {
-      res.status(404).json({ message: 'No user found with this id' });
+      res.status(404).json({message: 'No user found with this id'});
       return;
     }
 
     res.json(dbUserData);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Failed to get user' });
+    res.status(500).json({message: 'Failed to get user'});
   }
 });
 
+// Create a new user
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -56,25 +59,26 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Failed to create user' });
+    res.status(500).json({message: 'Failed to create user'});
   }
 });
 
+// Log in a user
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
-      where: { username: req.body.username },
+      where: {username: req.body.username},
     });
 
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that username!' });
+      res.status(400).json({message: 'No user with that username!'});
       return;
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password!' });
+      res.status(400).json({message: 'Incorrect password!'});
       return;
     }
 
@@ -90,10 +94,11 @@ router.post('/login', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Failed to log in' });
+    res.status(500).json({message: 'Failed to log in'});
   }
 });
 
+// Log out a user
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {

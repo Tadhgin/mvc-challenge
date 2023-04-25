@@ -1,9 +1,12 @@
-// Function to handle the click on the "Create New Post" button
+/**
+ * Handles the click on the "Create New Post" button
+ * @param {Event} event - The click event
+ */
 async function createPostHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    // Redirect to the new post form
-    document.location.replace('/dashboard/new')
+  // Redirect to the new post form
+  document.location.replace('/dashboard/new');
 }
 
 // Add an event listener to the "Create New Post" button

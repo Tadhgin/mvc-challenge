@@ -15,7 +15,7 @@ exports.index = async function(req, res) {
 
 
 // controllers/authController.js
-const db = require('../models');
+//const db = require('../models');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 

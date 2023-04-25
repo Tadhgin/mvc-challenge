@@ -5,12 +5,12 @@ module.exports = function(sequelize, DataTypes) {
     username: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   });
 
   User.beforeCreate(async (user) => {
@@ -24,10 +24,10 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     User.hasMany(models.Post, {
-      onDelete: 'cascade'
+      onDelete: 'cascade',
     });
     User.hasMany(models.Comment, {
-      onDelete: 'cascade'
+      onDelete: 'cascade',
     });
   };
 
