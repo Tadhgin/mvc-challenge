@@ -29,9 +29,6 @@ const sess = {
   }),
 };
 
-// Use session middleware in the app
-app.use(session(sess));
-
 // Create Express app
 const app = express();
 
