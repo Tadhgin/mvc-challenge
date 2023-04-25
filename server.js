@@ -13,15 +13,8 @@ const hbs = exphbs.create({
 
 // Load environment variables from .env file
 require('dotenv').config();
-
-const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-// Generate a random secret key for session signing
-const randomString = crypto.randomBytes(64).toString('hex');
-const secret = crypto.randomBytes(16).toString('hex');
-console.log(secret);
 
 // Set up session middleware with Sequelize store
 const sess = {
