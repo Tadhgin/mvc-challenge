@@ -11,20 +11,33 @@ const hbs = exphbs.create({
   helpers,
 });
 
-// Set up session middleware with Sequelize store
+// Load environment variables from .env file
+require('dotenv').config();
+
+const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+// Generate a random secret key for session signing
+const randomString = crypto.randomBytes(64).toString('hex');
+const secret = crypto.randomBytes(16).toString('hex');
+console.log(secret);
+
+// Set up session middleware with Sequelize store
 const sess = {
-  secret: process.env.DB_SECRET, // Set session secret from environment variable
+  secret: process.env.SESSION_SECRET, // Set session secret from environment variable
   cookie: {}, // Use default cookie settings
   resave: false, // Do not automatically save session on every request
   saveUninitialized: true, // Save uninitialized sessions
   store: new SequelizeStore({
-    db: sequelize, // Use the Sequelize instance
+    db: sequelize, // Use the Sequelize instance for session storage
     checkExpirationInterval: 1000 * 60 * 10, // Check for expired sessions every 10 minutes
-    expiration: 1000 * 60 * 30, // Sessions expire after 30 minutes
+    expiration: 1000 * 60 * 30, // Sessions expire after 30 minutes of inactivity
   }),
 };
+
+// Use session middleware in the app
+app.use(session(sess));
 
 // Create Express app
 const app = express();
