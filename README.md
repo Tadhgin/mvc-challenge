@@ -1,4 +1,8 @@
-# Model-View-Controller (MVC) Challenge: Tech Blog
+# Tech Blog
+
+This is a sample web application built with Node.js and the Express.js framework, using the Model-View-Controller (MVC) architecture pattern. 
+
+The application allows users to create, read, update, and delete (CRUD) posts, as well as register and log in to the application.
 
 ## User Story
 ````
@@ -43,7 +47,48 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ````
-## Mock-Up
-The following animation demonstrates the application functionality:
 
+### The MVC Challenge application includes the following features:
 
+    User registration and login using Passport.js authentication middleware
+    Session management using the express-session middleware and Sequelize.js session store
+    Post creation, reading, updating, and deletion using Sequelize.js ORM and PostgreSQL database
+    Form validation using the express-validator middleware
+    Error handling and logging using the winston and express-winston middleware
+    Unit testing using the Jest testing framework and Supertest library
+    CSS styling using the Bootstrap framework
+
+### Architecture
+
+The application follows the Model-View-Controller (MVC) architecture pattern, which separates the application into three main components:
+
+    Models: Represent the data and business logic of the application. In this application, the models are defined using Sequelize.js ORM and represent the User and Post entities.
+
+    Views: Represent the user interface of the application. In this application, the views are implemented using the EJS (Embedded JavaScript) template engine and the Bootstrap CSS framework.
+
+    Controllers: Handle user requests and responses, and mediate between the models and views. In this application, the controllers are implemented using the Express.js framework and represent the AuthController and PostController modules.
+
+## Deployment
+Check out the app here ~
+https://limitless-reef-80356.herokuapp.com/
+
+### Demo 
+This GIF shows a demo of the application
+
+### License
+This application is licensed under the MIT License. See the LICENSE file for details.
+
+### Acknowledgements
+This application was built with the help of the following resources:
+
+    Node.js: https://nodejs.org/en/
+    Express.js: https://expressjs.com/
+    Sequelize.js: https://sequelize.org/
+    PostgreSQL: https://www.postgresql.org/
+    Passport.js: http://www.passportjs.org/
+    EJS: https://ejs.co/
+    Bootstrap: https://getbootstrap.com/
+    Jest: https://jestjs.io/
+    Supertest: https://github.com/visionmedia/supertest
+    Winston: https://github.com/winstonjs/winston
+    Express Winston: https://github.com/bithavoc/express-winston
